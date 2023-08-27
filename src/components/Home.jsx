@@ -1,15 +1,35 @@
-import React from "react";
+import Hero from "./Hero";
+import BestSellers from "./BestSellers";
+import PromotionalBanner from "./PromotionalBanner";
+import { useState, useEffect } from "react";
+import axios from "axios";
 
 const Home = () => {
+  const [bestSellers, setBestSellers] = useState([]);
+
+  useEffect(() => {
+    const fetchBestSellers = async () => {
+      try {
+        const response = await axios.get(
+          "https://fakestoreapi.com/products?limit=5"
+        );
+        setBestSellers(response.data);
+      } catch (error) {
+        console.error("Error fetching best sellers:", error);
+      }
+    };
+
+    fetchBestSellers();
+  }, []);
+
   return (
-    <div className="container mx-auto p-8 h-screen">
-      <div className="text-center">
-        <h2 className="text-3xl font-semibold mb-4">Welcome to HedFONE!</h2>
-        <p className="text-gray-600">
-          Discover the latest products and shop with ease.
-        </p>
-      </div>
-      {/* Add additional content or sections here */}
+    <div className="container mx-auto p-8 h-[160rem]">
+      <Hero />
+      <BestSellers bestSellers={bestSellers} />
+      <PromotionalBanner
+        title="Special Promotion"
+        description="Limited-time offer: Get 20% off on selected items!"
+      />
     </div>
   );
 };
