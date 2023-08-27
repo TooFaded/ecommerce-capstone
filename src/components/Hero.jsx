@@ -1,10 +1,11 @@
 import HeroImg from "../assets/hero-img.png";
+import { Link } from "react-router-dom";
 
 const Hero = () => {
   return (
-    <div className="bg-gradient-to-r from-orange-300 to-orange-600 text-white py-[3rem] flex justify-evenly shadow-2xl">
+    <div className="bg-gradient-to-r from-orange-300 to-orange-600 text-white py-[3rem] flex justify-evenly shadow-2xl rounded-lg">
       <div className="max-w-5xl mx-auto px-6">
-        <h1 className="text-4xl md:text-5xl lg:text-6xl mb-4 font-sans">
+        <h1 className="text-3xl md:text-4xl lg:text-5xl mb-4 font-sans">
           Welcome to <span className="font-bungee">TEMI</span>, the newest
           Online Store!
         </h1>
@@ -12,9 +13,11 @@ const Hero = () => {
         <p className="text-lg md:text-xl font-light lg:text-2xl mb-8">
           Discover a wide range of high-quality products at amazing prices.
         </p>
-        <button className="bg-white text-orange-500 px-6 py-3 rounded-full text-lg font-semibold hover:bg-orange-100 transition">
-          Explore Products
-        </button>
+        <Link to="/products">
+          <button className="bg-white text-orange-500 px-6 py-3 rounded-full text-lg font-semibold hover:bg-orange-100 transition">
+            Explore Products
+          </button>
+        </Link>
 
         <div className="flex justify-center space-x-12">
           <p className="text-4xl flex justify-start items-end font-bungee">

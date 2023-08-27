@@ -5,8 +5,10 @@ const Header = () => {
   return (
     <header className="bg-orange-500 p-6 text-white">
       <div className="max-w-4xl mx-auto flex justify-between">
-        <h1 className="text-3xl font-semibold font-bungee">TEMI</h1>
-        <nav className="">
+        <h1 className="text-3xl font-semibold font-bungee">
+          <Link to="/">TEMI</Link>
+        </h1>
+        <nav className="font-sans">
           {" "}
           <ul className="flex space-x-8">
             <li>

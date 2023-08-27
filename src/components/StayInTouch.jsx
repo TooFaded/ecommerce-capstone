@@ -14,7 +14,7 @@ const StayInTouch = () => {
             <input
               type="email"
               placeholder="Enter your email"
-              className="w-full p-2 mb-4 border rounded"
+              className="w-full p-2 mb-4 border rounded bg-gray-200"
             />
             <button
               type="submit"
