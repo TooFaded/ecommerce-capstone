@@ -58,7 +58,7 @@ const App = () => {
         <Header cartTotalQuantity={cartTotalQuantity} />
         <div className="py-8">
           <Routes>
-            <Route path="/" exact element={<Home />} />
+            <Route path="/" exact element={<Home addToCart={addToCart} />} />
             <Route
               path="/products"
               element={<Products addToCart={addToCart} />}

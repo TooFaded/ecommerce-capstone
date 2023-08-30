@@ -14,7 +14,7 @@ const Home = ({ addToCart }) => {
     const fetchBestSellers = async () => {
       try {
         const response = await axios.get(
-          "https://fakestoreapi.com/products?limit=5"
+          "https://fakestoreapi.com/products?limit=6"
         );
         setBestSellers(response.data);
       } catch (error) {
@@ -41,7 +41,7 @@ const Home = ({ addToCart }) => {
   }, []);
 
   return (
-    <div className="container mx-auto p-8 h-[220rem]">
+    <div className="container mx-auto p-8 h-full">
       <Hero />
       <BestSellers bestSellers={bestSellers} addToCart={addToCart} />
       <PromotionalBanner

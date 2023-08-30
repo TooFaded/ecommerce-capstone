@@ -25,7 +25,7 @@ const Header = ({ cartTotalQuantity }) => {
               <Link to="/cart">
                 <FaShoppingCart className="text-2xl ml-4" />
                 {cartTotalQuantity > 0 && (
-                  <span className=" bg-red-500 text-white rounded-full w-6 h-6 flex items-center justify-center">
+                  <span className=" bg-white text-orange-500 rounded-full w-6 h-6 flex items-center justify-center">
                     {cartTotalQuantity}
                   </span>
                 )}

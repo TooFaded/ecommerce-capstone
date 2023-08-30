@@ -1,12 +1,18 @@
 import ProductCard from "./ProductCard";
 
-const Recommended = ({ recommendedItems }) => {
+const Recommended = ({ recommendedItems, addToCart }) => {
   return (
-    <section className="mt-20">
+    <section className="mt-20 mb-20 flex flex-col justify-between items-center">
       <h2 className="text-center mt-8 text-4xl font-bold">Recommended</h2>
-      <div className="flex flex-wrap justify-center space-x-4 space-y-4 mt-10 mb-20">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 mt-10">
         {recommendedItems.map((product) => (
-          <ProductCard key={product.id} product={product} showButtons={false} />
+          <div key={product.id} className="flex justify-center">
+            <ProductCard
+              product={product}
+              showButtons={false}
+              addToCart={addToCart}
+            />
+          </div>
         ))}
       </div>
     </section>

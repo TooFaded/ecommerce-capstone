@@ -19,12 +19,16 @@ const Hero = () => {
           </button>
         </Link>
 
-        <div className="flex justify-center space-x-12">
-          <p className="text-4xl flex justify-start items-end font-bungee">
+        <div className="flex justify-center space-x-12 mx-auto">
+          <p className="sm:text-3xl text-lg flex justify-start items-end font-bungee">
             LOW PRICES
           </p>
-          <img className="w-[10rem] mb-[-10rem]" src={HeroImg} alt="" />
-          <p className="flex justify-end text-4xl items-end font-bungee">
+          <img
+            className="sm:w-[10rem] w-[7rem] mb-[-10rem] mt-4 sm:mt-0"
+            src={HeroImg}
+            alt=""
+          />
+          <p className="flex justify-end sm:text-3xl text-lg items-end font-bungee">
             FREE SHIPPING
           </p>
         </div>
