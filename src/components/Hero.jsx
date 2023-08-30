@@ -14,7 +14,7 @@ const Hero = () => {
           Discover a wide range of high-quality products at amazing prices.
         </p>
         <Link to="/products">
-          <button className="bg-white text-orange-500 px-6 py-3 rounded-full text-lg font-semibold hover:bg-orange-100 transition">
+          <button className="bg-white text-orange-500 px-6 py-3 rounded-full text-lg font-semibold hover:bg-orange-100 transition mt-4">
             Explore Products
           </button>
         </Link>

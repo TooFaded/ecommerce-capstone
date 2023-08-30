@@ -1,8 +1,9 @@
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import axios from "axios";
 import ProductList from "./ProductList";
 
-const Products = () => {
+const Products = ({ addToCart }) => {
   // State to store fetched product data
   const [products, setProducts] = useState([]);
 
@@ -22,9 +23,14 @@ const Products = () => {
   }, []);
 
   return (
-    <div className="container mx-auto p-8 h-screen text-center overflow-scroll">
+    <div className="container mx-auto p-4 h-screen text-center overflow-scroll">
       <h2 className="text-3xl font-semibold mb-4">Our Products</h2>
-      <ProductList products={products} />
+      <div className="flex justify-center items-center mb-10">
+        <ProductList products={products} addToCart={addToCart} />
+      </div>
+      <Link to="/cart" className="text-orange-500 hover:underline">
+        View Cart
+      </Link>
     </div>
   );
 };

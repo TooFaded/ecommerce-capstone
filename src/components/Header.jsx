@@ -1,7 +1,7 @@
 import { FaShoppingCart } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
-const Header = () => {
+const Header = ({ cartTotalQuantity }) => {
   return (
     <header className="bg-orange-500 p-6 text-white">
       <div className="max-w-4xl mx-auto flex justify-between">
@@ -24,6 +24,11 @@ const Header = () => {
             <li>
               <Link to="/cart">
                 <FaShoppingCart className="text-2xl ml-4" />
+                {cartTotalQuantity > 0 && (
+                  <span className=" bg-red-500 text-white rounded-full w-6 h-6 flex items-center justify-center">
+                    {cartTotalQuantity}
+                  </span>
+                )}
               </Link>
             </li>
           </ul>
