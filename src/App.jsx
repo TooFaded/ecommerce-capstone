@@ -31,6 +31,9 @@ const App = () => {
     );
 
     setCartItems(updatedCartItems);
+    const itemToUpdate = cartItems.find((item) => item.id === itemId);
+    const quantityChange = newQuantity - itemToUpdate.quantity;
+    setCartTotalQuantity((prevTotal) => prevTotal + quantityChange);
     localStorage.setItem("cartItems", JSON.stringify(updatedCartItems));
   };
 
@@ -57,7 +60,9 @@ const App = () => {
     setCartTotalQuantity((prevTotal) => prevTotal - parseInt(itemQuantity, 10));
     localStorage.setItem("cartItems", JSON.stringify(updatedCartItems));
   };
-  console.log(cartTotalQuantity);
+  console.log("Cart total:", cartTotalQuantity);
+  console.log("Cart item:", cartItems);
+
   return (
     <Router>
       <div className="min-h-screen bg-gray-100">

@@ -52,7 +52,7 @@ const ProductModal = ({ product, closeModal, addToCart }) => {
             id="quantity"
             min="1"
             value={quantity}
-            onChange={(e) => setQuantity(e.target.value)}
+            onChange={(e) => setQuantity(parseInt(e.target.value, 10))}
             className="w-16 text-center  py-1 px-2 border border-gray-300 rounded-md focus:outline-none focus:border-orange-500"
           />
         </div>
