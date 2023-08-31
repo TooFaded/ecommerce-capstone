@@ -1,6 +1,6 @@
 import ProductCard from "./ProductCard";
 
-const ProductList = ({ products, addToCart }) => {
+const ProductList = ({ products, addToCart, setCartTotalQuantity }) => {
   return (
     <div className="max-w-7xl mt-8 grid gap-8 auto-cols-min md:grid-cols-4 lg:grid-cols-5 ml-36 sm:mx-auto ">
       {products.map((product) => (
@@ -9,6 +9,7 @@ const ProductList = ({ products, addToCart }) => {
           product={product}
           addToCart={addToCart}
           showButtons={true}
+          setCartTotalQuantity={setCartTotalQuantity}
         />
       ))}
     </div>

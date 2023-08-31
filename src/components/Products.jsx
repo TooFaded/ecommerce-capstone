@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import ProductList from "./ProductList";
 
-const Products = ({ addToCart }) => {
+const Products = ({ addToCart, setCartTotalQuantity }) => {
   // State to store fetched product data
   const [products, setProducts] = useState([]);
 
@@ -26,7 +26,11 @@ const Products = ({ addToCart }) => {
     <div className="container mx-auto p-4 h-screen text-center overflow-scroll">
       <h2 className="text-3xl font-semibold mb-4">Our Products</h2>
       <div className="flex justify-center items-center mb-10">
-        <ProductList products={products} addToCart={addToCart} />
+        <ProductList
+          products={products}
+          addToCart={addToCart}
+          setCartTotalQuantity={setCartTotalQuantity}
+        />
       </div>
       <Link to="/cart" className="text-orange-500 hover:underline">
         View Cart

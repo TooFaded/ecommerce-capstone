@@ -18,10 +18,15 @@ const App = () => {
   }, []);
 
   const updateCartItem = (itemId, newQuantity) => {
+    // Ensure newQuantity is a valid number
+    if (isNaN(newQuantity)) {
+      return; // Exit early if newQuantity is not a valid number
+    }
+
     // Find the item in the cart by its ID
     const updatedCartItems = cartItems.map((item) =>
       item.id === itemId
-        ? { ...item, quantity: Math.max(newQuantity, 1) } // Prevent quantity from going below 1
+        ? { ...item, quantity: Math.max(parseInt(newQuantity), 1) } // Use parseInt to ensure newQuantity is a number
         : item
     );
 
@@ -29,39 +34,54 @@ const App = () => {
     localStorage.setItem("cartItems", JSON.stringify(updatedCartItems));
   };
 
-  const addToCart = (product) => {
+  const addToCart = (product, quantity) => {
     const updatedCartItems = [...cartItems];
     const existingItemIndex = updatedCartItems.findIndex(
       (item) => item.id === product.id
     );
 
     if (existingItemIndex !== -1) {
-      updatedCartItems[existingItemIndex].quantity += 1;
+      updatedCartItems[existingItemIndex].quantity += quantity;
     } else {
-      updatedCartItems.push({ ...product, quantity: 1 });
+      updatedCartItems.push({ ...product, quantity: quantity });
     }
-    setCartTotalQuantity(cartTotalQuantity + 1);
+
     setCartItems(updatedCartItems);
+    setCartTotalQuantity((prevTotal) => prevTotal + parseInt(quantity, 10));
     localStorage.setItem("cartItems", JSON.stringify(updatedCartItems));
   };
 
-  const deleteCartItem = (itemId) => {
+  const deleteCartItem = (itemId, itemQuantity) => {
     const updatedCartItems = cartItems.filter((item) => item.id !== itemId);
     setCartItems(updatedCartItems);
-    setCartTotalQuantity(cartTotalQuantity - 1);
+    setCartTotalQuantity((prevTotal) => prevTotal - parseInt(itemQuantity, 10));
     localStorage.setItem("cartItems", JSON.stringify(updatedCartItems));
   };
-
+  console.log(cartTotalQuantity);
   return (
     <Router>
       <div className="min-h-screen bg-gray-100">
         <Header cartTotalQuantity={cartTotalQuantity} />
         <div className="py-8">
           <Routes>
-            <Route path="/" exact element={<Home addToCart={addToCart} />} />
+            <Route
+              path="/"
+              exact
+              element={
+                <Home
+                  addToCart={addToCart}
+                  setCartTotalQuantity={setCartTotalQuantity}
+                />
+              }
+            />
             <Route
               path="/products"
-              element={<Products addToCart={addToCart} />}
+              element={
+                <Products
+                  addToCart={addToCart}
+                  setCartTotalQuantity={setCartTotalQuantity}
+                />
+              }
             />
             <Route
               path="/cart"

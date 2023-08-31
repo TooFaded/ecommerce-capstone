@@ -14,7 +14,7 @@ const Cart = ({ cartItems, updateCartItem, deleteCartItem }) => {
                 className="w-32 h-32 object-cover mx-auto mb-2"
               />
               <p>{item.title}</p>
-              <p>{item.price}</p>
+              <p>${item.price}</p>
               <div className="text-xl p-2 flex justify-center space-x-4 ">
                 Quantity:{" "}
                 <button
@@ -33,7 +33,7 @@ const Cart = ({ cartItems, updateCartItem, deleteCartItem }) => {
               </div>
               <button
                 className="px-3 py-1 mt-4 bg-red-500 text-white rounded-lg hover:bg-red-600 focus:outline-none"
-                onClick={() => deleteCartItem(item.id)}
+                onClick={() => deleteCartItem(item.id, item.quantity)}
               >
                 Remove
               </button>

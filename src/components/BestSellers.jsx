@@ -1,6 +1,6 @@
 import ProductCard from "./ProductCard";
 
-const BestSellers = ({ bestSellers, addToCart }) => {
+const BestSellers = ({ bestSellers, addToCart, setCartTotalQuantity }) => {
   return (
     <section className="mt-40 flex flex-col justify-center items-center">
       <h2 className="text-center mt-8 text-4xl font-bold">Best Sellers</h2>
@@ -11,6 +11,7 @@ const BestSellers = ({ bestSellers, addToCart }) => {
               product={product}
               showButtons={false}
               addToCart={addToCart}
+              setCartTotalQuantity={setCartTotalQuantity}
             />
           </div>
         ))}

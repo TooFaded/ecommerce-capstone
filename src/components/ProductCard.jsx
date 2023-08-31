@@ -13,8 +13,8 @@ const ProductCard = ({ product, addToCart, showButtons }) => {
     setIsModalOpen(false);
   };
 
-  const handleAddToCart = (product) => {
-    addToCart(product);
+  const handleAddToCart = (product, quantity) => {
+    addToCart(product, quantity);
     setIsAddedToCart(true);
   };
 
@@ -41,7 +41,7 @@ const ProductCard = ({ product, addToCart, showButtons }) => {
       {showButtons && (
         <button
           className=" mt-2 bg-orange-500 hover:bg-orange-700 text-white px-4 py-1 rounded-md"
-          onClick={() => handleAddToCart(product)}
+          onClick={() => handleAddToCart(product, 1)}
         >
           Add to Cart
         </button>

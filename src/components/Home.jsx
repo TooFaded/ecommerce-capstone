@@ -6,7 +6,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import Recommended from "./Recommended";
 
-const Home = ({ addToCart }) => {
+const Home = ({ addToCart, setCartTotalQuantity }) => {
   const [bestSellers, setBestSellers] = useState([]);
   const [recommendedItems, setRecommendedItems] = useState([]);
 
@@ -43,12 +43,20 @@ const Home = ({ addToCart }) => {
   return (
     <div className="container mx-auto p-8 h-full">
       <Hero />
-      <BestSellers bestSellers={bestSellers} addToCart={addToCart} />
+      <BestSellers
+        bestSellers={bestSellers}
+        addToCart={addToCart}
+        setCartTotalQuantity={setCartTotalQuantity}
+      />
       <PromotionalBanner
         title="Special Promotion"
         description="Limited-time offer: Get 20% off on selected items!"
       />
-      <Recommended recommendedItems={recommendedItems} addToCart={addToCart} />
+      <Recommended
+        recommendedItems={recommendedItems}
+        addToCart={addToCart}
+        setCartTotalQuantity={setCartTotalQuantity}
+      />
       <StayInTouch />
     </div>
   );

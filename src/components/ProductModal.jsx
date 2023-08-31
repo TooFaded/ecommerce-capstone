@@ -2,9 +2,10 @@ import { useState, useEffect } from "react";
 
 const ProductModal = ({ product, closeModal, addToCart }) => {
   const [isAddedToCart, setIsAddedToCart] = useState(false);
+  const [quantity, setQuantity] = useState(1);
 
-  const handleAddToCart = (product) => {
-    addToCart(product);
+  const handleAddToCart = (product, quantity) => {
+    addToCart(product, quantity);
     setIsAddedToCart(true);
   };
 
@@ -42,9 +43,23 @@ const ProductModal = ({ product, closeModal, addToCart }) => {
           </p>
         </div>
         <p className="text-center text-gray-600">${product.price}</p>
+        <div className="flex flex-row justify-center items-center">
+          <label htmlFor="quantity" className="mb-2">
+            Quantity:
+          </label>
+          <input
+            type="number"
+            id="quantity"
+            min="1"
+            value={quantity}
+            onChange={(e) => setQuantity(e.target.value)}
+            className="w-16 text-center  py-1 px-2 border border-gray-300 rounded-md focus:outline-none focus:border-orange-500"
+          />
+        </div>
+
         <div className="flex justify-center">
           <button
-            onClick={() => handleAddToCart(product)}
+            onClick={() => handleAddToCart(product, quantity)}
             className="bg-orange-500 hover:bg-orange-600 text-white px-4 py-2 rounded-lg text-2xl"
           >
             Add to Cart

@@ -1,6 +1,6 @@
 import ProductCard from "./ProductCard";
 
-const Recommended = ({ recommendedItems, addToCart }) => {
+const Recommended = ({ recommendedItems, addToCart, setCartTotalQuantity }) => {
   return (
     <section className="mt-20 mb-20 flex flex-col justify-between items-center">
       <h2 className="text-center mt-8 text-4xl font-bold">Recommended</h2>
@@ -11,6 +11,7 @@ const Recommended = ({ recommendedItems, addToCart }) => {
               product={product}
               showButtons={false}
               addToCart={addToCart}
+              setCartTotalQuantity={setCartTotalQuantity}
             />
           </div>
         ))}
