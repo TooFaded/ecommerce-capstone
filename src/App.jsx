@@ -19,7 +19,7 @@ const App = () => {
 
   const updateCartItem = (itemId, newQuantity) => {
     // Ensure newQuantity is a valid number
-    if (isNaN(newQuantity)) {
+    if (isNaN(newQuantity) || newQuantity < 1) {
       return; // Exit early if newQuantity is not a valid number
     }
 

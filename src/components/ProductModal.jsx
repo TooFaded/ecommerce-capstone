@@ -27,6 +27,7 @@ const ProductModal = ({ product, closeModal, addToCart }) => {
         <h1 className="text-2xl font-bold mb-10">
           Category: {product.category}
         </h1>
+        <p className="text-xl text-black">Rating {product.rating.rate}</p>
         <p className="font-bungee text-orange-400 text-xl text-right">
           FREE SHIPPING
         </p>
