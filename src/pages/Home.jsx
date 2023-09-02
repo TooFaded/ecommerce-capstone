@@ -1,10 +1,10 @@
-import Hero from "./Hero";
-import BestSellers from "./BestSellers";
-import PromotionalBanner from "./PromotionalBanner";
-import StayInTouch from "./StayInTouch";
+import Hero from "../components/Hero";
+import BestSellers from "../components/BestSellers";
+import PromotionalBanner from "../components/PromotionalBanner";
+import StayInTouch from "../components/StayInTouch";
 import { useState, useEffect } from "react";
 import axios from "axios";
-import Recommended from "./Recommended";
+import Recommended from "../components/Recommended";
 
 const Home = ({ addToCart, setCartTotalQuantity }) => {
   const [bestSellers, setBestSellers] = useState([]);

@@ -23,11 +23,16 @@ const ProductModal = ({ product, closeModal, addToCart }) => {
   return (
     <div className="fixed inset-0 flex items-center justify-center">
       <div className="modal-bg fixed inset-0 bg-black opacity-50 z-40"></div>
-      <div className="modal-container bg-white rounded-lg shadow-lg p-8 w-[42rem] h-[50rem] z-50 flex flex-col justify-evenly ">
+      <div className="modal-container bg-white rounded-lg shadow-lg p-8 w-[42rem] h-[52rem] z-50 flex flex-col justify-evenly ">
         <h1 className="text-2xl font-bold mb-10">
           Category: {product.category}
         </h1>
-        <p className="text-xl text-black">Rating {product.rating.rate}</p>
+        <p className="text-xl text-black">
+          Rating{" "}
+          <span className="text-orange-400 font-semibold">
+            {product.rating.rate}
+          </span>
+        </p>
         <p className="font-bungee text-orange-400 text-xl text-right">
           FREE SHIPPING
         </p>
@@ -45,8 +50,8 @@ const ProductModal = ({ product, closeModal, addToCart }) => {
         </div>
         <p className="text-center text-gray-600">${product.price}</p>
         <div className="flex flex-row justify-center items-center">
-          <label htmlFor="quantity" className="mb-2">
-            Quantity:
+          <label htmlFor="quantity" className="mb-2 mr-2">
+            Quantity
           </label>
           <input
             type="number"
