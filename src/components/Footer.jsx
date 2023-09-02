@@ -24,7 +24,7 @@ const Footer = () => {
             Terms &amp; Conditions
           </a>
         </div>
-        <p>&copy; {new Date().getFullYear()} HedFONE. All rights reserved.</p>
+        <p>&copy; {new Date().getFullYear()} TEMI. All rights reserved.</p>
       </div>
     </footer>
   );

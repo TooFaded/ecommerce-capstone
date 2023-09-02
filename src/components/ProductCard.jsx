@@ -36,7 +36,12 @@ const ProductCard = ({ product, addToCart, showButtons }) => {
         className="w-32 h-32 object-cover mx-auto mb-2 cursor-pointer hover:scale-105"
         onClick={openModal}
       />
-      <h3 className="text-lg font-semibold">{product.title}</h3>
+      <h3
+        className="text-lg font-semibold hover:underline cursor-pointer"
+        onClick={openModal}
+      >
+        {product.title}
+      </h3>
       <p className="text-gray-600">${product.price}</p>
       {showButtons && (
         <button

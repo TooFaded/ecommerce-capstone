@@ -4,6 +4,8 @@ import Home from "./pages/Home";
 import Products from "./pages/Products";
 import Cart from "./pages/Cart";
 import Footer from "./components/Footer";
+import Login from "./pages/Login";
+import Register from "./pages/Register";
 import { useState, useEffect } from "react";
 
 const App = () => {
@@ -60,8 +62,6 @@ const App = () => {
     setCartTotalQuantity((prevTotal) => prevTotal - parseInt(itemQuantity, 10));
     localStorage.setItem("cartItems", JSON.stringify(updatedCartItems));
   };
-  console.log("Cart total:", cartTotalQuantity);
-  console.log("Cart item:", cartItems);
 
   return (
     <Router>
@@ -98,7 +98,8 @@ const App = () => {
                 />
               }
             />
-            {/* Add more routes as needed */}
+            <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Register />} />
           </Routes>
         </div>
         <Footer />

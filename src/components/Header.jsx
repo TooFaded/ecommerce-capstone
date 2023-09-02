@@ -1,4 +1,5 @@
 import { FaShoppingCart } from "react-icons/fa";
+import { MdAccountCircle } from "react-icons/md";
 import { Link } from "react-router-dom";
 
 const Header = ({ cartTotalQuantity }) => {
@@ -22,8 +23,13 @@ const Header = ({ cartTotalQuantity }) => {
               </Link>
             </li>
             <li>
+              <Link to="/login">
+                <MdAccountCircle className="text-3xl" />
+              </Link>
+            </li>
+            <li>
               <Link to="/cart">
-                <FaShoppingCart className="text-2xl ml-4" />
+                <FaShoppingCart className="text-2xl ml-1 mt-[1px]" />
                 {cartTotalQuantity > 0 && (
                   <span className=" bg-white text-orange-500 rounded-full w-6 h-6 flex items-center justify-center">
                     {cartTotalQuantity}
