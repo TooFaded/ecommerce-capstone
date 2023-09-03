@@ -1,11 +1,18 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
 
-const AuthForm = ({ isLogin }) => {
+const AuthForm = ({ isLogin, onSuccess }) => {
   const [formData, setFormData] = useState({
     email: "",
     password: "",
+    confirmPassword: "",
   });
+
+  const [error, setError] = useState(""); // State to hold error messages
+  const [successMessage, setSuccessMessage] = useState("");
+
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -15,14 +22,48 @@ const AuthForm = ({ isLogin }) => {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Perform login or registration logic here
-    console.log("Form data:", formData);
+    setError("");
+
+    try {
+      const response = await axios.post(
+        isLogin
+          ? "http://localhost:3000/login"
+          : "http://localhost:3000/register",
+        formData
+      );
+
+      if (response.status === 200 || 201) {
+        const { token } = response.data;
+        const { message } = response.data;
+        setSuccessMessage(message);
+
+        // Store the token in localStorage
+        localStorage.setItem("token", token);
+
+        onSuccess("Login/registration successful!");
+
+        // Redirect the user to a protected page
+        navigate("/profile");
+      } else {
+        const { message } = response.data;
+        setError(message);
+      }
+    } catch (error) {
+      console.error("An error occurred while processing your request:", error);
+      setError("An error occurred. Please try again later.");
+    }
   };
 
   return (
     <div className="flex flex-col items-center mt-16">
+      {error && <div className="text-red-600 bg-red-100 p-2 mb-2">{error}</div>}
+      {successMessage && (
+        <div className="text-green-600 bg-green-100 p-2 mb-2">
+          {successMessage}
+        </div>
+      )}
       <h2 className="text-2xl font-semibold mb-4">
         {isLogin ? "Login" : "Register"}
       </h2>
@@ -86,7 +127,7 @@ const AuthForm = ({ isLogin }) => {
           )}
         </div>
 
-        <div class="flex justify-center items-center">
+        <div className="flex justify-center items-center">
           <button
             type="submit"
             className="bg-orange-500  text-white py-2 px-4 rounded-md hover:bg-orange-600 transition duration-300"

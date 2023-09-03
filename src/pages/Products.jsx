@@ -42,7 +42,7 @@ const Products = ({ addToCart, setCartTotalQuantity }) => {
   return (
     <div className="container mx-auto p-8 h-screen overflow-scroll">
       <h2 className="text-3xl font-semibold mb-4 text-center">Our Products</h2>
-      <div className="flex justify-between items-center mb-4">
+      <div className="flex justify-evenly items-center mb-4">
         <div className="p-1">
           Sort by Price:
           <button

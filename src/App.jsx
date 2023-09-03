@@ -7,10 +7,18 @@ import Footer from "./components/Footer";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import { useState, useEffect } from "react";
+import Profile from "./pages/Profile";
+import ProtectedRoute from "./pages/ProtectedRoute";
 
 const App = () => {
   const [cartItems, setCartItems] = useState([]);
   const [cartTotalQuantity, setCartTotalQuantity] = useState(0);
+
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [successMessage, setSuccessMessage] = useState("");
+  const handleSuccessfulLogin = (message) => {
+    setSuccessMessage(message);
+  };
 
   useEffect(() => {
     const storedCartItems = JSON.parse(localStorage.getItem("cartItems"));
@@ -66,7 +74,10 @@ const App = () => {
   return (
     <Router>
       <div className="min-h-screen bg-gray-100">
-        <Header cartTotalQuantity={cartTotalQuantity} />
+        <Header
+          cartTotalQuantity={cartTotalQuantity}
+          setIsAuthenticated={setIsAuthenticated}
+        />
         <div className="py-8">
           <Routes>
             <Route
@@ -88,18 +99,42 @@ const App = () => {
                 />
               }
             />
+
             <Route
-              path="/cart"
+              element={<ProtectedRoute isAuthenticated={isAuthenticated} />}
+            >
+              <Route
+                path="/cart"
+                element={
+                  <Cart
+                    cartItems={cartItems}
+                    updateCartItem={updateCartItem}
+                    deleteCartItem={deleteCartItem}
+                  />
+                }
+                exact
+              />
+            </Route>
+
+            <Route
+              path="/login"
               element={
-                <Cart
-                  cartItems={cartItems}
-                  updateCartItem={updateCartItem}
-                  deleteCartItem={deleteCartItem}
+                <Login
+                  onSuccessfulLogin={handleSuccessfulLogin}
+                  setIsAuthenticated={setIsAuthenticated}
                 />
               }
             />
-            <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
+            <Route
+              path="/profile"
+              element={
+                <Profile
+                  successMessage={successMessage}
+                  setSuccessMessage={setSuccessMessage}
+                />
+              }
+            />
           </Routes>
         </div>
         <Footer />
