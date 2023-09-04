@@ -34,15 +34,15 @@ const AuthForm = ({ isLogin, onSuccess }) => {
         formData
       );
 
-      if (response.status === 200 || 201) {
+      if (response.status === 200 || response.status === 201) {
         const { token } = response.data;
         const { message } = response.data;
         setSuccessMessage(message);
 
         // Store the token in localStorage
         localStorage.setItem("token", token);
-
-        onSuccess("Login/registration successful!");
+        localStorage.removeItem("previousUserData");
+        onSuccess("Login successful!");
 
         // Redirect the user to a protected page
         navigate("/profile");
@@ -52,7 +52,12 @@ const AuthForm = ({ isLogin, onSuccess }) => {
       }
     } catch (error) {
       console.error("An error occurred while processing your request:", error);
-      setError("An error occurred. Please try again later.");
+      if (error.response) {
+        const errorMessage = error.response.data.message;
+        setError(errorMessage);
+      } else {
+        setError("An error occurred. Please try again later.");
+      }
     }
   };
 

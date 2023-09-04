@@ -19,6 +19,9 @@ const App = () => {
   const handleSuccessfulLogin = (message) => {
     setSuccessMessage(message);
   };
+  const handleSuccessfulRegister = (message) => {
+    setSuccessMessage(message);
+  };
 
   useEffect(() => {
     const storedCartItems = JSON.parse(localStorage.getItem("cartItems"));
@@ -125,7 +128,15 @@ const App = () => {
                 />
               }
             />
-            <Route path="/register" element={<Register />} />
+            <Route
+              path="/register"
+              element={
+                <Register
+                  onSuccessfulRegister={handleSuccessfulRegister}
+                  setIsAuthenticated={setIsAuthenticated}
+                />
+              }
+            />
             <Route
               path="/profile"
               element={

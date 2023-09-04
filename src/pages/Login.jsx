@@ -4,7 +4,7 @@ import loginImg from "../assets/loginImg.png";
 function Login({ onSuccessfulLogin, setIsAuthenticated }) {
   const handleSuccessfulLogin = (message) => {
     setIsAuthenticated(true);
-    onSuccessfulLogin(message); // Call the function from App.jsx
+    onSuccessfulLogin(message);
   };
 
   return (

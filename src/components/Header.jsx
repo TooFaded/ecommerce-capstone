@@ -8,6 +8,7 @@ const Header = ({ cartTotalQuantity, setIsAuthenticated }) => {
   const handleSignOut = () => {
     // Remove the token from localStorage
     localStorage.removeItem("token");
+    localStorage.removeItem("previousUserData");
     setIsAuthenticated(false);
 
     // Redirect the user to the login page
