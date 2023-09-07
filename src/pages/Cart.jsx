@@ -1,6 +1,15 @@
+import { useNavigate } from "react-router-dom";
+
 const Cart = ({ cartItems, updateCartItem, deleteCartItem }) => {
+  const calculateTotal = () => {
+    return cartItems.reduce((total, item) => {
+      return total + item.price * item.quantity;
+    }, 0);
+  };
+
+  const navigate = useNavigate();
   return (
-    <div className="container mx-auto p-8 h-screen text-center">
+    <div className="container mx-auto p-8 h-[120vh] text-center">
       <h2 className="text-3xl font-semibold mb-4">Your Cart</h2>
       {cartItems.length === 0 ? (
         <p>Your cart is empty.</p>
@@ -39,7 +48,22 @@ const Cart = ({ cartItems, updateCartItem, deleteCartItem }) => {
               </button>
             </div>
           ))}
-          {/* Add checkout button, total price, etc. */}
+          <div className="w-full mt-20">
+            <div className="flex justify-between border-t-2 border-gray-300 p-4">
+              <div className="text-lg font-semibold">Total:</div>
+              <div className="text-lg">${calculateTotal().toFixed(2)}</div>
+            </div>
+            <button
+              className="w-full bg-orange-500 text-white py-2 mt-4 rounded-lg hover:bg-orange-600 focus:outline-none"
+              onClick={() => {
+                // Add logic to navigate to the checkout page here
+
+                navigate("/checkout");
+              }}
+            >
+              Proceed to Checkout
+            </button>
+          </div>
         </div>
       )}
     </div>

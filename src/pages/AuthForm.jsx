@@ -7,6 +7,7 @@ const AuthForm = ({ isLogin, onSuccess }) => {
     email: "",
     password: "",
     confirmPassword: "",
+    address: "Street, City, State, Zip Code",
   });
 
   const [error, setError] = useState(""); // State to hold error messages
@@ -41,6 +42,9 @@ const AuthForm = ({ isLogin, onSuccess }) => {
 
         // Store the token in localStorage
         localStorage.setItem("token", token);
+        // Store user data in local storage
+        localStorage.setItem("userData", JSON.stringify(formData));
+
         localStorage.removeItem("previousUserData");
         onSuccess("Login successful!");
 

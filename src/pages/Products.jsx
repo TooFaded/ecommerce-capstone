@@ -36,7 +36,7 @@ const Products = ({ addToCart, setCartTotalQuantity }) => {
     } else if (sortBy === "price-desc") {
       return b.price - a.price; // Sort by price in descending order
     }
-    return 0; // Default: no sorting
+    return 0;
   });
 
   return (

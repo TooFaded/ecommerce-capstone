@@ -19,7 +19,7 @@ const Hero = () => {
           </button>
         </Link>
 
-        <div className="flex justify-center space-x-12 mx-auto mt-2 sm:mt-[-3rem]">
+        <div className="sm:flex hidden justify-center space-x-12 mx-auto mt-2 sm:mt-[-3rem]">
           <p className="sm:text-3xl text-lg flex justify-start items-end font-bungee">
             LOW PRICES
           </p>

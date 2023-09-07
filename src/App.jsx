@@ -1,4 +1,5 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { useState, useEffect } from "react";
 import Header from "./components/Header";
 import Home from "./pages/Home";
 import Products from "./pages/Products";
@@ -6,9 +7,10 @@ import Cart from "./pages/Cart";
 import Footer from "./components/Footer";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
-import { useState, useEffect } from "react";
 import Profile from "./pages/Profile";
 import ProtectedRoute from "./pages/ProtectedRoute";
+import Checkout from "./pages/Checkout";
+import OrderConfirmation from "./pages/OrderConfirmation";
 
 const App = () => {
   const [cartItems, setCartItems] = useState([]);
@@ -72,6 +74,11 @@ const App = () => {
     setCartItems(updatedCartItems);
     setCartTotalQuantity((prevTotal) => prevTotal - parseInt(itemQuantity, 10));
     localStorage.setItem("cartItems", JSON.stringify(updatedCartItems));
+  };
+
+  const clearCart = () => {
+    setCartItems([]); // Clear the cart by setting cartItems to an empty array
+    setCartTotalQuantity(0); // Reset the total quantity
   };
 
   return (
@@ -146,6 +153,11 @@ const App = () => {
                 />
               }
             />
+            <Route
+              path="/checkout"
+              element={<Checkout cartItems={cartItems} clearCart={clearCart} />}
+            />
+            <Route path="/order-confirmation" element={<OrderConfirmation />} />
           </Routes>
         </div>
         <Footer />
