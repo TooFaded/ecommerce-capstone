@@ -20,7 +20,7 @@ export default {
         lobster: ["Lobster", "cursive"],
       },
       backgroundImage: {
-        banner: "url('/banner-img.jpg')",
+        banner: "url(/banner-img.jpg)",
       },
     },
   },
