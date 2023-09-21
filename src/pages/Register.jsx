@@ -10,7 +10,7 @@ function Register({ onSuccessfulRegister, setIsAuthenticated }) {
     navigate("/profile");
   };
   return (
-    <div className="h-[80vh] flex flex-col">
+    <div className="sm:h-[80vh] md:h-full  h-[122vh] flex flex-col">
       <AuthForm isLogin={false} onSuccess={handleSuccessfulRegister} />
       <div className="mt-20 flex justify-center">
         <img className="w-40" src={registerImg} alt="" />
