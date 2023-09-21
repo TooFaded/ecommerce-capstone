@@ -72,7 +72,7 @@ const ProductModal = ({ product, closeModal, addToCart }) => {
           </button>
         </div>
         {isAddedToCart && (
-          <div className="flex justify-center items-center mt-2 mb-4 bg-green-500 text-white p-2 rounded-md">
+          <div className="flex justify-center items-center mt-2 mb-4 bg-green-500 text-white p-2 rounded-md mx-40">
             Item added to cart
           </div>
         )}

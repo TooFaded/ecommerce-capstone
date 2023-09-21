@@ -1,5 +1,11 @@
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
+import {
+  FaCcVisa,
+  FaCcAmex,
+  FaCcMastercard,
+  FaCcDiscover,
+} from "react-icons/fa";
 
 const Checkout = ({ cartItems, clearCart }) => {
   const navigate = useNavigate();
@@ -44,9 +50,10 @@ const Checkout = ({ cartItems, clearCart }) => {
   return (
     <div className="container mx-auto p-10 h-full">
       <h2 className="text-3xl font-semibold mb-4 text-center">Checkout</h2>
-      <div className="flex justify-center  items-center space-x-20">
+
+      <div className="flex justify-center items-center space-x-10">
         <form
-          className="border-4 border-grey-300 w-[80vw] p-10 py-20 m-20"
+          className="w-[86vw] border-4 border-grey-300 px-10 py-10 m-10"
           onSubmit={handlePlaceOrder}
         >
           {/* Payment Information */}
@@ -182,47 +189,56 @@ const Checkout = ({ cartItems, clearCart }) => {
             />
           </div>
 
+          {/* Cart Summary */}
+          <div className="flex flex-wrap justify-center space-x-1  mt-20">
+            {cartItems.map((item) => (
+              <div key={item.id} className="border-4 p-4 mb-4 w-[22rem]">
+                <img
+                  src={item.image}
+                  alt={item.name}
+                  className="w-32 h-32 object-cover mx-auto mb-2"
+                />
+                <p>{item.title}</p>
+                <p>${item.price}</p>
+                <p>Qauntity: {item.quantity}</p>
+              </div>
+            ))}
+
+            {/* Total */}
+            <div className="w-full">
+              <div className="flex flex-col justify-end items-end border-t-2 border-gray-300 p-4">
+                <div className="text-lg font-semibold">
+                  Shipping & handling: $0.00
+                </div>
+                <div className="flex space-x-1">
+                  <div className="text-lg font-semibold">Total:</div>
+                  <div className="text-lg">${calculateTotal().toFixed(2)}</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
           {/* Submit Button */}
           <button
             className="w-full bg-orange-500 text-white py-2 mt-4 rounded-lg hover:bg-orange-600 focus:outline-none"
             type="submit"
           >
             {loading && (
-              <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+              <div className="absolute top-full left-1/2 transform -translate-x-1/2 -translate-y-1/2">
                 <div className="w-16 h-16 border-t-4 border-orange-500 border-solid rounded-full animate-spin"></div>
               </div>
             )}
             {loading ? "Placing Order..." : "Place Order"}
           </button>
         </form>
+      </div>
 
-        {/* Cart Summary */}
-        <div className="flex flex-wrap justify-center">
-          {cartItems.map((item) => (
-            <div key={item.id} className="border-4  p-4 mb-4 w-[20rem]">
-              <img
-                src={item.image}
-                alt={item.name}
-                className="w-32 h-32 object-cover mx-auto mb-2"
-              />
-              <p>{item.title}</p>
-              <p>${item.price}</p>
-            </div>
-          ))}
-
-          {/* Total */}
-          <div className="w-full">
-            <div className="flex flex-col justify-end items-end border-t-2 border-gray-300 p-4">
-              <div className="text-lg font-semibold">
-                Shipping & handling: $0.00
-              </div>
-              <div className="flex space-x-1">
-                <div className="text-lg font-semibold">Total:</div>
-                <div className="text-lg">${calculateTotal().toFixed(2)}</div>
-              </div>
-            </div>
-          </div>
-        </div>
+      <h1 className="text-2xl font-bold ml-10">We accept</h1>
+      <div className="flex ml-10 space-x-4">
+        <FaCcVisa className="text-8xl text-orange-500" />
+        <FaCcAmex className="text-8xl text-orange-500" />
+        <FaCcMastercard className="text-8xl text-orange-500" />
+        <FaCcDiscover className="text-8xl text-orange-500" />
       </div>
     </div>
   );

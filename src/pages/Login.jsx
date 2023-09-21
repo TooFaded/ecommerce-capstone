@@ -2,9 +2,10 @@ import AuthForm from "./AuthForm";
 import loginImg from "../assets/loginImg.png";
 
 function Login({ onSuccessfulLogin, setIsAuthenticated }) {
-  const handleSuccessfulLogin = (message) => {
+  const handleSuccessfulLogin = (message, token) => {
     setIsAuthenticated(true);
     onSuccessfulLogin(message);
+    localStorage.setItem("token", token);
   };
 
   return (

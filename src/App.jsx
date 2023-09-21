@@ -18,8 +18,9 @@ const App = () => {
 
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [successMessage, setSuccessMessage] = useState("");
-  const handleSuccessfulLogin = (message) => {
+  const handleSuccessfulLogin = (message, token) => {
     setSuccessMessage(message);
+    localStorage.setItem("token", token);
   };
   const handleSuccessfulRegister = (message) => {
     setSuccessMessage(message);

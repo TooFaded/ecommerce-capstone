@@ -2,10 +2,10 @@ import StayInTouchImg from "../assets/stay-in-touch-img.png";
 
 const StayInTouch = () => {
   return (
-    <section className="bg-gray-300 py-16 mt-8 rounded-lg">
+    <section className="bg-gray-300 m-[-1rem] py-16 mt-8 rounded-lg">
       <div className="container mx-auto text-center">
         <h2 className="text-3xl font-semibold mb-4">Stay in Touch</h2>
-        <p className="text-gray-600 mb-8">
+        <p className="text-gray-600 text-sm sm:text-md mb-8">
           Get sneak previews of special offers & upcoming events delivered to
           your inbox.
         </p>
