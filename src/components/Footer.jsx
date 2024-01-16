@@ -16,7 +16,7 @@ const Footer = () => {
         <div className="flex flex-col">
           <h3 className="text-2xl mb-4">Company info</h3>
           <ul className="space-y-2">
-            <li className="hover:underline hover:cursor-pointer">About Temu</li>
+            <li className="hover:underline hover:cursor-pointer">About Temi</li>
             <li className="hover:underline hover:cursor-pointer">Careers</li>
             <li className="hover:underline hover:cursor-pointer">
               Affiliate & Influencer
@@ -54,7 +54,7 @@ const Footer = () => {
               Support center & FAQ
             </li>
             <li className="hover:underline hover:cursor-pointer">
-              Temu purchase protection
+              Temi purchase protection
             </li>
             <li className="hover:underline hover:cursor-pointer">
               Privacy policy and setting
@@ -63,7 +63,7 @@ const Footer = () => {
               How to order
             </li>
             <li className="hover:underline hover:cursor-pointer">
-              Sell on Temu
+              Sell on Temi
             </li>
           </ul>
         </div>
