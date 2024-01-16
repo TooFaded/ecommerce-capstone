@@ -27,7 +27,7 @@ const ProductModal = ({ product, closeModal, addToCart }) => {
         className="modal-bg fixed inset-0 bg-black opacity-50 z-40"
         onClick={closeModal}
       />
-      <div className="modal-container bg-white rounded-lg shadow-lg p-4 sm:p-8 w-full sm:w-[46rem] h-full sm:h-[60rem] z-50 flex flex-col justify-evenly">
+      <div className="modal-container bg-white rounded-lg shadow-lg p-4 sm:p-8 w-100 sm:w-[46rem] h-100 sm:h-[40rem] z-50 flex flex-col justify-evenly">
         <h1 className="text-lg sm:text-2xl font-bold mb-4 sm:mb-10">
           Category: {product.category}
         </h1>
@@ -70,7 +70,7 @@ const ProductModal = ({ product, closeModal, addToCart }) => {
         <div className="flex justify-center">
           <button
             onClick={() => handleAddToCart(product, quantity)}
-            className="bg-orange-500 hover:bg-orange-600 text-white text-base sm:text-xl px-3 sm:px-4 py-1 sm:py-2 rounded"
+            className="bg-orange-500 hover:bg-orange-600 text-white text-base sm:text-xl px-3 sm:px-4 py-1 mt-2 sm:py-2 rounded"
           >
             Add to Cart
           </button>
