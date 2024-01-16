@@ -14,7 +14,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: 16 # Specify Node.js version 14 here
+          node-version: 20 # Specify Node.js version 14 here
       - run: npm install # You can add this step if needed
       - run: npm run build
       - uses: FirebaseExtended/action-hosting-deploy@v0
