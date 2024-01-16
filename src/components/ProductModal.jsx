@@ -22,7 +22,7 @@ const ProductModal = ({ product, closeModal, addToCart }) => {
 
   return (
     <div className="fixed inset-0 flex items-center justify-center">
-      {/* backdrop /* */}
+      {/* backdrop */}
       <div
         className="modal-bg fixed inset-0 bg-black opacity-50 z-40"
         onClick={closeModal}
