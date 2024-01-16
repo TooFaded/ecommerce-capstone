@@ -24,8 +24,9 @@ const ProductModal = ({ product, closeModal, addToCart }) => {
     <div className="fixed inset-0 flex items-center justify-center">
       <div
         className="modal-bg fixed inset-0 bg-black opacity-50 z-40"
-        onClick={closeModal}
-      />
+        onClose={closeModal}
+      />{" "}
+      {/* backdrop /* */}
       <div className="modal-container bg-white rounded-lg shadow-lg p-8 w-[46rem] h-[60rem] z-50 flex flex-col justify-evenly ">
         <h1 className="text-2xl font-bold mb-10">
           Category: {product.category}
